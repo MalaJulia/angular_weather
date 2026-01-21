@@ -1,0 +1,23 @@
+export const cities = [
+    { q: 'kyiv', name: 'Київ' },
+    { q: 'kharkiv', name: 'Харків' },
+    { q: 'odesa', name: 'Одеса' },
+    { q: 'dnipro', name: 'Дніпро' },
+    { q: 'lviv', name: 'Львів' },
+    { q: 'zaporizhzhia', name: 'Запоріжжя' },
+    { q: 'kryvyi rih', name: 'Кривий Ріг' },
+    { q: 'mykolaiv', name: 'Миколаїв' },
+    { q: 'vinnytsia', name: 'Вінниця' },
+    { q: 'poltava', name: 'Полтава' },
+    { q: 'chernihiv', name: 'Чернігів' },
+    { q: 'cherkasy', name: 'Черкаси' },
+    { q: 'sumy', name: 'Суми' },
+    { q: 'zhytomyr', name: 'Житомир' },
+    { q: 'ivano-frankivsk', name: 'Івано-Франківськ' },
+    { q: 'ternopil', name: 'Тернопіль' },
+    { q: 'lutsk', name: 'Луцьк' },
+    { q: 'rivne', name: 'Рівне' },
+    { q: 'uzhhorod', name: 'Ужгород' },
+    { q: 'chernivtsi', name: 'Чернівці' },
+    { q: 'kropyvnytskyi', name: 'Кропивницький' }
+  ];
