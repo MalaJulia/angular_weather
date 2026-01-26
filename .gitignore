@@ -42,4 +42,5 @@ __screenshots__/
 .DS_Store
 Thumbs.db
 
-.env
+# Angular environment files (secrets)
+src/environments/environment.ts
