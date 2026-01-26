@@ -43,4 +43,4 @@ __screenshots__/
 Thumbs.db
 
 # Angular environment files (secrets)
-src/environments/environment.ts
+src/environment/environment.ts
