@@ -8,7 +8,7 @@ import { Observable, map, startWith } from 'rxjs';
 import { WeatherService } from './../../servises /servise';
 import { IWeather } from './../../interfaces/weather';
 import { cities } from './../../constants/cityes';
-import { NavigationExtras, Router } from "@angular/router";
+import { NavigationExtras, Router } from '@angular/router';
 
 interface City {
   q: string;
@@ -24,33 +24,33 @@ interface City {
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
-],
+  ],
   templateUrl: './main-page.html',
-  styleUrls: ['./main-page.css']
+  styleUrls: ['./main-page.css'],
 })
 export class MainPage {
   weatherService = inject(WeatherService);
-  router = inject(Router)
+  router = inject(Router);
 
   myControl = new FormControl<City | string>('');
   weather: Observable<IWeather> | null = null;
-  tempMax:  number | null = null;
-  tempMin:  number | null = null;
+  tempMax: number | null = null;
+  tempMin: number | null = null;
   // forDetails : any
 
-
   cities = cities;
+  repeat = Array.from({ length: 20 });
 
   filteredCities: Observable<City[]> = this.myControl.valueChanges.pipe(
     startWith(''),
-    map(value => {
-      const filterValue = typeof value === 'string' ? value.toLowerCase() : value?.name.toLowerCase() ?? '';
+    map((value) => {
+      const filterValue =
+        typeof value === 'string' ? value.toLowerCase() : (value?.name.toLowerCase() ?? '');
       return this.cities
-        .filter(city => city.name.toLowerCase().includes(filterValue))
+        .filter((city) => city.name.toLowerCase().includes(filterValue))
         .slice(0, 5);
-    })
+    }),
   );
-
 
   displayCity(city?: City): string {
     return city ? city.name : '';
@@ -59,40 +59,39 @@ export class MainPage {
   test(city: City): void {
     const query = city.q;
     this.weather = this.weatherService.getAll(query).pipe(
-      map(res => {
-       this.tempMax = Math.ceil(res.main.temp_max)
-       this.tempMin = Math.floor(res.main.temp_min)
-       localStorage.setItem('weather', JSON.stringify(res));
+      map((res) => {
+        this.tempMax = Math.ceil(res.main.temp_max);
+        this.tempMin = Math.floor(res.main.temp_min);
+        localStorage.setItem('weather', JSON.stringify(res));
         console.log(res, 'weather result');
         return res;
-      })
+      }),
     );
   }
-  goToWeatherDetail(forDetails:any) {
+  goToWeatherDetail(forDetails: any) {
     if (!forDetails) return; // якщо погоди ще немає — нічого не робимо
 
     const navigationExtras: NavigationExtras = {
-      state: { weather: forDetails }
+      state: { weather: forDetails },
     };
 
     this.router.navigate(['/details'], navigationExtras);
   }
 }
 
-
 //   filter(): void {
 //    this.filterValue = this.input.nativeElement.value.toLowerCase()
 //    this.cities.filter(o => o.name.toLowerCase().includes(this.filterValue))
 //    console.log(this.filterValue)
 //   }
- 
+
 //   test(query: string): void {
 //   this.weather = this.weatherService.getAll(query).pipe(map((rec)=> {
 //   console.log(rec, 'rec')
 //   return rec
 // }))
 //   }
- 
-  // weather: Observable<IWeather> = this.weatherService.getAll(''); 
-  
+
+// weather: Observable<IWeather> = this.weatherService.getAll('');
+
 // }

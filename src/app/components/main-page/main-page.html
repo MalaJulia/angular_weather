@@ -1,31 +1,33 @@
+<div class="mainBlock">
+  <div class="header">
+    <div class="marquee">
+      <div class="marquee__inner">
+        @for (_ of repeat; track $index) {
+          <span>ПОГОДА В УКРАЇНІ</span>
+        }
+      </div>
+    </div>
+  </div>
   <mat-form-field appearance="outline">
     <mat-label>City</mat-label>
-    <input
-      matInput
-      [formControl]="myControl"
-      [matAutocomplete]="auto"
-    />
-  
+    <input matInput [formControl]="myControl" [matAutocomplete]="auto" />
+
     <mat-autocomplete
       #auto="matAutocomplete"
       [displayWith]="displayCity"
       (optionSelected)="test($event.option.value)"
     >
-      <mat-option
-        *ngFor="let city of filteredCities | async"
-        [value]="city"
-      >
+      <mat-option *ngFor="let city of filteredCities | async" [value]="city">
         {{ city.name }}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 
-  @if (weather| async; as weatherObject) {
-   <div> {{weatherObject.name}}
-    Tемпература повітря максимальна {{tempMax}}
-   Tемпература повітря мінімальна {{tempMin}}
-   <button (click)="goToWeatherDetail(weatherObject)">details</button>
-  </div>
-  } 
-  
-  
+  @if (weather | async; as weatherObject) {
+    <div class="allInformation">
+      <div>Tемпература повітря максимальна {{ tempMax }}</div>
+      <div>Tемпература повітря мінімальна {{ tempMin }}</div>
+      <button (click)="goToWeatherDetail(weatherObject)">details</button>
+    </div>
+  }
+</div>
