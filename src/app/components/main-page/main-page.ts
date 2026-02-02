@@ -13,6 +13,7 @@ import { NavigationExtras, Router } from '@angular/router';
 interface City {
   q: string;
   name: string;
+  background: string;
 }
 
 @Component({
@@ -36,7 +37,7 @@ export class MainPage {
   weather: Observable<IWeather> | null = null;
   tempMax: number | null = null;
   tempMin: number | null = null;
-  // forDetails : any
+  background: string | null = null;
 
   cities = cities;
   repeat = Array.from({ length: 20 });
@@ -45,19 +46,18 @@ export class MainPage {
     startWith(''),
     map((value) => {
       const filterValue =
-        typeof value === 'string' ? value.toLowerCase() : (value?.name.toLowerCase() ?? '');
-      return this.cities
-        .filter((city) => city.name.toLowerCase().includes(filterValue))
-        .slice(0, 5);
-    }),
+        typeof value === 'string' ? value.toLowerCase() : value?.name.toLowerCase() ?? '';
+      return this.cities.filter((city) => city.name.toLowerCase().includes(filterValue));
+    })
   );
 
   displayCity(city?: City): string {
     return city ? city.name : '';
   }
 
-  test(city: City): void {
+  get(city: City): void {
     const query = city.q;
+    this.background = city.background;
     this.weather = this.weatherService.getAll(query).pipe(
       map((res) => {
         this.tempMax = Math.ceil(res.main.temp_max);
@@ -65,9 +65,10 @@ export class MainPage {
         localStorage.setItem('weather', JSON.stringify(res));
         console.log(res, 'weather result');
         return res;
-      }),
+      })
     );
   }
+
   goToWeatherDetail(forDetails: any) {
     if (!forDetails) return; // якщо погоди ще немає — нічого не робимо
 
@@ -78,20 +79,3 @@ export class MainPage {
     this.router.navigate(['/details'], navigationExtras);
   }
 }
-
-//   filter(): void {
-//    this.filterValue = this.input.nativeElement.value.toLowerCase()
-//    this.cities.filter(o => o.name.toLowerCase().includes(this.filterValue))
-//    console.log(this.filterValue)
-//   }
-
-//   test(query: string): void {
-//   this.weather = this.weatherService.getAll(query).pipe(map((rec)=> {
-//   console.log(rec, 'rec')
-//   return rec
-// }))
-//   }
-
-// weather: Observable<IWeather> = this.weatherService.getAll('');
-
-// }

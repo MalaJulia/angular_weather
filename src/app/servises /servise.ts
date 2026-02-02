@@ -13,7 +13,7 @@ export class WeatherService {
     console.log(city);
     console.log(environment.weatherApiKey, 'weatherApiKey');
     const myWeather = this.httpClient.get<IWeather>(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${environment.weatherApiKey}`,
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${environment.weatherApiKey}&units=metric`,
     );
     console.log(myWeather, 'myWeather');
     return myWeather;
