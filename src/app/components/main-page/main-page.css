@@ -1,7 +1,7 @@
 .mainBlock {
     width: 100%;
     height: 100%;
-    background-color: aqua;
+    background-color: #f8eef2;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,7 +13,7 @@
     width: 100%;
     position: fixed;
     height: 50px;
-    background: antiquewhite;
+    background: #f8eef2;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -51,7 +51,7 @@
 
 
 .allInformation {
-    background-color: antiquewhite;
+    background-color: #f8eef2;
     border: solid 1px black;
     width: 30%;
     height: 20%;
