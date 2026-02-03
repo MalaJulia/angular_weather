@@ -17,7 +17,9 @@
     overflow: hidden;
     display: flex;
     align-items: center;
-    top: 0px
+    top: 0px;
+    border-bottom: solid 1px plum;
+    
 }
 
 .marquee {
@@ -34,9 +36,10 @@
 
 .marquee__inner span {
     font-weight: bold;
-    color: blue;
+    color: blueviolet;
     display: inline-block;
     padding-right: 40px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 @keyframes marquee {
@@ -52,12 +55,31 @@
 
 .allInformation {
     background-color: #f8eef2;
-    border: solid 1px black;
+    border: solid 1px plum;
     width: 30%;
     height: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border-radius: 10px;
+}
 
+.allInformation p {
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+
+.buttonDetails{ 
+    width: 200px;
+    height: 30px;
+    color: blueviolet;
+    background-color: #f8eef2;
+    border: solid 1px plum;
+    border-radius: 10px;
+    font-weight: bold
+}
+
+.buttonDetails:hover{
+    background-color: plum
 }
