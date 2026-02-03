@@ -27,9 +27,9 @@
 
   @if (weather | async; as weatherObject) {
   <div class="allInformation">
-    <div>Tемпература повітря максимальна {{ tempMax }}</div>
-    <div>Tемпература повітря мінімальна {{ tempMin }}</div>
-    <button (click)="goToWeatherDetail(weatherObject)">details</button>
+    <p>Tемпература повітря максимальна {{ tempMax }}</p>
+    <p>Tемпература повітря мінімальна {{ tempMin }}</p>
+    <button class="buttonDetails" (click)="goToWeatherDetail(weatherObject)">DETAILS</button>
   </div>
   }
 </div>
